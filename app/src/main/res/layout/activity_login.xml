@@ -22,7 +22,8 @@
         android:ems="10"
         android:hint="Entrez un mail"
         android:inputType="textPersonName"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:text="test1@gmail.com" />
 
     <EditText
         android:id="@+id/motDePasse"
@@ -31,7 +32,8 @@
         android:ems="10"
         android:hint="Entrez un mot de passe"
         android:inputType="textPersonName"
-        android:minHeight="48dp" />
+        android:minHeight="48dp"
+        android:text="123456" />
 
     <Button
         android:id="@+id/bntconnexion"
