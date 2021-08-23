@@ -36,13 +36,16 @@ class ListeArticles : AppCompatActivity() {
 
         // Read from the database
         val listeArticlesReference = database.child("ListeArticles")
+
         // My top posts by number of stars
         listeArticlesReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(listearticles: DataSnapshot) {
-                for (articles in listearticles.children) {
+                for (articles in listearticles.child("articles").children){
                     // TODO: handle the post
-                    binding.nom1.text = articles.toString()
-
+                    binding.nom1.text = articles.key.toString()
+                    for (def in articles.children) {
+                        binding.def1.text = def.key.toString()+def.value.toString()
+                    }
                 }
             }
 
@@ -55,3 +58,4 @@ class ListeArticles : AppCompatActivity() {
 
     }
 }
+
