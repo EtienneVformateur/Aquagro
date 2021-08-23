@@ -48,7 +48,7 @@ class CreateUser : AppCompatActivity() {
                         if (task.isSuccessful) {
                             Toast.makeText(
                                 baseContext,
-                                "Bienvenue vous êtes enregistré, veuillez vous reconnecter",
+                                "Vous êtes enregistré, veuillez vous reconnecter",
                                 Toast.LENGTH_SHORT
                             ).show()
                             auth.signOut()
