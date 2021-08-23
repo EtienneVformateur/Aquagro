@@ -39,4 +39,10 @@
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/btnListeDeconnexion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Deconnexion" />
+
 </LinearLayout>

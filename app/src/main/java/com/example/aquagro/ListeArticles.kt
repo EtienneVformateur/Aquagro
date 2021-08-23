@@ -1,11 +1,14 @@
 package com.example.aquagro
 
 import android.content.ContentValues.TAG
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import com.example.aquagro.databinding.ActivityListeArticlesBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
@@ -16,6 +19,7 @@ import com.google.firebase.ktx.Firebase
 
 
 class ListeArticles : AppCompatActivity() {
+    private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
     private lateinit var binding: ActivityListeArticlesBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +28,7 @@ class ListeArticles : AppCompatActivity() {
         binding = ActivityListeArticlesBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        auth = Firebase.auth
 
 //        val nom1 = findViewById<TextView>(R.id.nom1)
 //        val def1 = findViewById<TextView>(R.id.def1)
@@ -31,6 +36,11 @@ class ListeArticles : AppCompatActivity() {
 //        val def2 = findViewById<TextView>(R.id.def2)
 //        val nom3 = findViewById<TextView>(R.id.nom3)
 //        val def3 = findViewById<TextView>(R.id.def3)
+        binding.btnListeDeconnexion.setOnClickListener {
+            auth.signOut()
+            val articlesIntent = Intent(this,MainActivity::class.java)
+            startActivity(articlesIntent)
+        }
 
         database = Firebase.database("https://aquagro-2fe01-default-rtdb.europe-west1.firebasedatabase.app/").reference
 
