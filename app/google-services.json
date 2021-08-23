@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "923522569022",
+    "project_id": "aquagro-2fe01",
+    "storage_bucket": "aquagro-2fe01.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:923522569022:android:3f0b23093e33a6b9ced26f",
+        "android_client_info": {
+          "package_name": "com.example.aquagro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "923522569022-eueis9u4m5j2nhv4slilco639b4dv6sr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDCUlFC-hHEcge0lkaeVExe06Wp8jHgwho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "923522569022-eueis9u4m5j2nhv4slilco639b4dv6sr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
