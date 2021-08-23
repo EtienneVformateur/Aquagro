@@ -52,7 +52,7 @@ class CreateUser : AppCompatActivity() {
                                 Toast.LENGTH_SHORT
                             ).show()
                             auth.signOut()
-                            val ConnexionIntent = Intent(this,MainActivity::class.java)
+                            val ConnexionIntent = Intent(this,Login::class.java)
                             startActivity(ConnexionIntent)
                         }
                     }
@@ -69,7 +69,7 @@ class CreateUser : AppCompatActivity() {
         }
 
         btnAnnulation.setOnClickListener {
-            val RetourAccueilIntent = Intent(this,MainActivity::class.java)
+            val RetourAccueilIntent = Intent(this,Login::class.java)
             startActivity(RetourAccueilIntent)
 
         }

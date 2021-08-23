@@ -5,7 +5,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.TextView
 import com.example.aquagro.databinding.ActivityListeArticlesBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -22,6 +21,13 @@ class ListeArticles : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
     private lateinit var binding: ActivityListeArticlesBinding
+
+    class Article(
+        val definition: String,
+        val prix: String
+    )
+    private var tableauArticle = arrayListOf<Article>()
+    private var numeroArticleEnCours = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_liste_articles)
@@ -36,10 +42,24 @@ class ListeArticles : AppCompatActivity() {
 //        val def2 = findViewById<TextView>(R.id.def2)
 //        val nom3 = findViewById<TextView>(R.id.nom3)
 //        val def3 = findViewById<TextView>(R.id.def3)
+
         binding.btnListeDeconnexion.setOnClickListener {
             auth.signOut()
-            val articlesIntent = Intent(this,MainActivity::class.java)
+            val articlesIntent = Intent(this,Login::class.java)
             startActivity(articlesIntent)
+        }
+
+        binding.btNext.setOnClickListener {
+            numeroArticleEnCours ++
+            if (numeroArticleEnCours >= tableauArticle.size){
+                numeroArticleEnCours = 0
+                binding.nom1.text = tableauArticle[0].definition
+                binding.def1.text = tableauArticle[0].prix
+            }
+            else{
+                binding.nom1.text = tableauArticle[numeroArticleEnCours].definition
+                binding.def1.text = tableauArticle[numeroArticleEnCours].prix
+            }
         }
 
         database = Firebase.database("https://aquagro-2fe01-default-rtdb.europe-west1.firebasedatabase.app/").reference
@@ -51,12 +71,14 @@ class ListeArticles : AppCompatActivity() {
         listeArticlesReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(listearticles: DataSnapshot) {
                 for (articles in listearticles.child("articles").children){
-                    // TODO: handle the post
-                    binding.nom1.text = articles.key.toString()
-                    for (def in articles.children) {
-                        binding.def1.text = def.key.toString()+def.value.toString()
-                    }
+//                    binding.nom1.text = articles.key.toString()
+//                    binding.def1.text = articles.child("definition").value.toString() +
+//                            articles.child("prix").value.toString()
+                    val newArticle = Article(articles.child("definition").value.toString(),articles.child("prix").value.toString())
+                    tableauArticle.add(newArticle)
                 }
+                binding.nom1.text = tableauArticle[0].definition
+                binding.def1.text = tableauArticle[0].prix
             }
 
             override fun onCancelled(databaseError: DatabaseError) {

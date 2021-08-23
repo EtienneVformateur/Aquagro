@@ -1,15 +1,10 @@
 package com.example.aquagro
 
-import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Parcel
-import android.os.Parcelable
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -51,7 +46,7 @@ class VerifMail : AppCompatActivity() {
 
         btnDeconnexion.setOnClickListener {
             auth.signOut()
-            val RetourIntent = Intent(this, MainActivity::class.java)
+            val RetourIntent = Intent(this, Login::class.java)
             startActivity(RetourIntent)
         }
 

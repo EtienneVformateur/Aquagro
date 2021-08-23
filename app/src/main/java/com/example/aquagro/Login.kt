@@ -10,7 +10,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
-class MainActivity : AppCompatActivity() {
+class Login : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
 
         //Ouvre la page de mot de passe oublié
         motDePasseOublie.setOnClickListener {
-            val ForgotIntent = Intent(this,MainActivity::class.java)
+            val ForgotIntent = Intent(this,Login::class.java)
             startActivity(ForgotIntent)
         }
     }
@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
 //        // Check if user is signed in (non-null) and update UI accordingly.
 //        val currentUser = auth.currentUser
 //        if(currentUser != null){
-//            val AccueilIntent = Intent(this,MainActivity::class.java)
+//            val AccueilIntent = Intent(this,Login::class.java)
 //            startActivity(AccueilIntent)
 //
 //        }
